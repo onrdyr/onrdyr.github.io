@@ -1,1 +1,382 @@
-<h1>onur</h1>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Onur D. | Bilgisayar Mühendisi</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- RESET & TEMEL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f6fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* ---------- BAŞLIK BÖLÜMÜ ---------- */
+        .header {
+            background: linear-gradient(145deg, #0b1a2e, #1a2f44);
+            color: white;
+            padding: 3rem 3rem 2.5rem;
+            text-align: center;
+        }
+
+        .avatar {
+            font-size: 4.5rem;
+            background: rgba(255, 255, 255, 0.08);
+            width: 110px;
+            height: 110px;
+            line-height: 110px;
+            border-radius: 50%;
+            margin: 0 auto 1.2rem;
+            border: 3px solid rgba(255, 255, 255, 0.15);
+            color: #7fc9ff;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .header .title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #b6d4f0;
+            margin-bottom: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .social-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.8rem;
+            margin: 0 10px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ---------- İÇERİK ---------- */
+        .content {
+            padding: 2.5rem 3rem 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.2rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b1a2e;
+            border-bottom: 3px solid #e2e9f3;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #2a6f9c;
+            font-size: 1.3rem;
+            width: 28px;
+        }
+
+        .bio p {
+            font-size: 1.05rem;
+            margin-bottom: 0.8rem;
+            color: #2c3e4e;
+        }
+
+        .highlight {
+            color: #1a5f8b;
+            font-weight: 500;
+        }
+
+        /* ----- YETENEK ETİKETLERİ ----- */
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 12px;
+            margin-top: 6px;
+        }
+
+        .skill-tag {
+            background: #eef3f9;
+            padding: 6px 18px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #1a3b52;
+            border: 1px solid #d6e2ef;
+            transition: 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: #dce8f5;
+            transform: scale(1.02);
+        }
+
+        /* ----- PROJE KARTLARI ----- */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: #f8faff;
+            padding: 1.3rem 1.3rem 1.5rem;
+            border-radius: 18px;
+            border: 1px solid #e8eef6;
+            transition: 0.25s ease;
+        }
+
+        .project-card:hover {
+            border-color: #b3cee8;
+            box-shadow: 0 6px 20px rgba(0, 20, 40, 0.06);
+            transform: translateY(-4px);
+        }
+
+        .project-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #0f2a3f;
+        }
+
+        .project-card p {
+            font-size: 0.95rem;
+            color: #3e5568;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card .tech {
+            font-size: 0.8rem;
+            background: #e3ecf5;
+            padding: 2px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            color: #1f4970;
+            font-weight: 500;
+        }
+
+        .project-card a {
+            color: #1f6a9e;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .project-card a i {
+            margin-left: 4px;
+            font-size: 0.75rem;
+        }
+
+        .project-card a:hover {
+            text-decoration: underline;
+        }
+
+        /* ----- İLETİŞİM ----- */
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        .contact-item i {
+            width: 24px;
+            color: #1f6a9e;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: #1e3f5c;
+            text-decoration: none;
+            border-bottom: 1px dotted transparent;
+            transition: 0.2s;
+        }
+
+        .contact-item a:hover {
+            border-bottom-color: #1f6a9e;
+            color: #0f2a3f;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            text-align: center;
+            padding: 1.5rem 3rem 1.8rem;
+            font-size: 0.9rem;
+            color: #6f8aa0;
+            border-top: 1px solid #eaf0f7;
+            background: #fbfdff;
+        }
+
+        .footer i {
+            color: #b0c9df;
+            margin: 0 4px;
+        }
+
+        /* ---------- MOBIL UYUM ---------- */
+        @media (max-width: 650px) {
+            .header {
+                padding: 2rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            .content {
+                padding: 1.8rem 1.5rem;
+            }
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- BAŞLIK / HAKKINDA -->
+        <div class="header">
+            <div class="avatar">
+                <i class="fas fa-user-astronaut"></i>
+            </div>
+            <h1>Onur D.</h1>
+            <div class="title">Bilgisayar Mühendisi · Full Stack Developer</div>
+            <div class="social-links">
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <!-- İÇERİK -->
+        <div class="content">
+
+            <!-- Biyografi -->
+            <div class="section bio">
+                <div class="section-title">
+                    <i class="fas fa-user"></i> Hakkımda
+                </div>
+                <p>
+                    Merhaba! Ben <span class="highlight">Onur</span>, bilgisayar mühendisiyim.
+                    Yazılım geliştirme, sistem mimarisi ve yapay zeka konularına ilgi duyuyorum.
+                    Teknolojiyle hayatları kolaylaştıran çözümler üretmekten keyif alıyorum.
+                </p>
+                <p>
+                    Şu anda serbest çalışıyor, açık kaynak projelere katkı sağlıyor ve
+                    yeni teknolojileri keşfediyorum.
+                </p>
+            </div>
+
+            <!-- Yetenekler -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-code"></i> Uzmanlık Alanları
+                </div>
+                <div class="skills-grid">
+                    <span class="skill-tag">JavaScript / TypeScript</span>
+                    <span class="skill-tag">React & Next.js</span>
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">Python (Flask/Django)</span>
+                    <span class="skill-tag">Go / Rust</span>
+                    <span class="skill-tag">SQL / NoSQL</span>
+                    <span class="skill-tag">Docker & Kubernetes</span>
+                    <span class="skill-tag">CI/CD (GitHub Actions)</span>
+                    <span class="skill-tag">Yapay Zeka (LLM, RAG)</span>
+                </div>
+            </div>
+
+            <!-- Projeler -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-rocket"></i> Öne Çıkan Projeler
+                </div>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h4>AI Asistan</h4>
+                        <p>Döküman sorgulama ve özetleme için RAG tabanlı bir chatbot.</p>
+                        <span class="tech">Python · LangChain</span>
+                        <br><br>
+                        <a href="#">Proje detayları <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <h4>E-Ticaret API</h4>
+                        <p>Yüksek performanslı, mikroservis mimarisine sahip bir API ağı.</p>
+                        <span class="tech">Go · gRPC · Redis</span>
+                        <br><br>
+                        <a href="#">Proje detayları <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <h4>Portföy Siteniz</h4>
+                        <p>Bu sayfa! Sade, hızlı ve tamamen size özel.</p>
+                        <span class="tech">HTML · CSS · GitHub Pages</span>
+                        <br><br>
+                        <a href="#"><i class="fas fa-check-circle"></i> Yayında</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İletişim -->
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-envelope"></i> İletişim
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-at"></i>
+                    <a href="mailto:onur@example.com">onur@example.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="#">github.com/onrdyr</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="#">linkedin.com/in/onrdyr</a>
+                </div>
+            </div>
+
+        </div> <!-- /content -->
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <i class="fas fa-crown"></i> 2026 · Tüm hakları açık · <i class="fas fa-heart" style="color:#be7c7c;"></i> ile tasarlandı
+        </div>
+
+    </div> <!-- /container -->
+
+</body>
+</html>
