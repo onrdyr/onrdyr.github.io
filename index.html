@@ -3,263 +3,435 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Onur D. | Bilgisayar Mühendisi</title>
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <title>Onur D. | Dinamik Portföy</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-        /* ---------- RESET & TEMEL ---------- */
+        /* ========== RESET & DEĞİŞKENLER ========== */
+        :root {
+            --bg: #f0f2f8;
+            --card-bg: #ffffff;
+            --text: #1a2639;
+            --text-secondary: #3d4e66;
+            --border: #dde3ed;
+            --primary: #2563eb;
+            --primary-dark: #1a4bbf;
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            --radius: 24px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        [data-theme="dark"] {
+            --bg: #0f1724;
+            --card-bg: #1a2639;
+            --text: #edf2f9;
+            --text-secondary: #a8bcd9;
+            --border: #2d405b;
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f4f6fa;
-            color: #1e2a3a;
-            line-height: 1.6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 2rem 1rem;
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background var(--transition), color var(--transition);
+            line-height: 1.7;
+            padding: 0 1rem;
         }
 
+        /* ========== GENEL KONTEYNER ========== */
         .container {
-            max-width: 1000px;
-            width: 100%;
-            background: white;
-            border-radius: 32px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: all 0.2s ease;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 0 3rem;
         }
 
-        /* ---------- BAŞLIK BÖLÜMÜ ---------- */
-        .header {
-            background: linear-gradient(145deg, #0b1a2e, #1a2f44);
-            color: white;
-            padding: 3rem 3rem 2.5rem;
-            text-align: center;
+        /* ========== NAVBAR ========== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            background: var(--card-bg);
+            border-radius: 60px;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border);
+            transition: all var(--transition);
+            backdrop-filter: blur(8px);
         }
 
-        .avatar {
-            font-size: 4.5rem;
-            background: rgba(255, 255, 255, 0.08);
-            width: 110px;
-            height: 110px;
-            line-height: 110px;
-            border-radius: 50%;
-            margin: 0 auto 1.2rem;
-            border: 3px solid rgba(255, 255, 255, 0.15);
-            color: #7fc9ff;
-        }
-
-        .header h1 {
-            font-size: 2.8rem;
+        .logo {
+            font-size: 1.5rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 0.3rem;
+        }
+        .logo span {
+            color: var(--primary);
         }
 
-        .header .title {
-            font-size: 1.2rem;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            cursor: pointer;
+            padding: 0.3rem 0.6rem;
+            border-radius: 30px;
+            transition: 0.3s;
+            background: var(--bg);
+        }
+        .theme-toggle:hover {
+            color: var(--primary);
+            transform: rotate(20deg);
+        }
+
+        /* ========== HERO BÖLÜMÜ ========== */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 2.5rem 1rem 3rem;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-avatar {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary), #7c6df0);
+            width: 120px;
+            height: 120px;
+            line-height: 120px;
+            border-radius: 50%;
+            color: white;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .hero .dynamic-title {
+            font-size: 1.4rem;
             font-weight: 300;
-            color: #b6d4f0;
-            margin-bottom: 1.5rem;
-            letter-spacing: 1px;
+            color: var(--text-secondary);
+            min-height: 3rem;
+            margin-bottom: 0.6rem;
+        }
+        .hero .dynamic-title .cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2rem;
+            background: var(--primary);
+            margin-left: 4px;
+            vertical-align: text-bottom;
+            animation: blink 0.8s step-end infinite;
         }
 
-        .social-links a {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1.8rem;
+        @keyframes blink {
+            0%,
+            100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .hero-bio {
+            max-width: 600px;
+            color: var(--text-secondary);
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            font-size: 1.5rem;
+            color: var(--text-secondary);
             margin: 0 10px;
             transition: 0.3s;
-            display: inline-block;
         }
-
-        .social-links a:hover {
-            color: white;
+        .social-icons a:hover {
+            color: var(--primary);
             transform: translateY(-3px);
         }
 
-        /* ---------- İÇERİK ---------- */
-        .content {
-            padding: 2.5rem 3rem 3rem;
+        /* ========== CANLI SAAT ========== */
+        .live-clock {
+            margin-top: 1.2rem;
+            font-size: 0.95rem;
+            background: var(--bg);
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .live-clock i {
+            color: var(--primary);
         }
 
-        .section {
-            margin-bottom: 2.2rem;
-        }
-
+        /* ========== BÖLÜM BAŞLIKLARI ========== */
         .section-title {
-            font-size: 1.3rem;
+            font-size: 1.8rem;
             font-weight: 600;
-            color: #0b1a2e;
-            border-bottom: 3px solid #e2e9f3;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            color: var(--text);
         }
-
         .section-title i {
-            color: #2a6f9c;
-            font-size: 1.3rem;
-            width: 28px;
+            color: var(--primary);
+            font-size: 1.6rem;
         }
 
-        .bio p {
-            font-size: 1.05rem;
-            margin-bottom: 0.8rem;
-            color: #2c3e4e;
+        /* ========== YETENEKLER ========== */
+        .skills-section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.8s ease forwards;
         }
 
-        .highlight {
-            color: #1a5f8b;
+        .skill-item {
+            margin-bottom: 1.2rem;
+        }
+        .skill-item .skill-label {
+            display: flex;
+            justify-content: space-between;
             font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .skill-bar {
+            width: 100%;
+            height: 8px;
+            background: var(--bg);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .skill-bar .fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), #7c6df0);
+            border-radius: 10px;
+            transition: width 1.5s ease;
         }
 
-        /* ----- YETENEK ETİKETLERİ ----- */
-        .skills-grid {
+        /* ========== PROJELER (Filtreli) ========== */
+        .projects-section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .filter-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 12px;
-            margin-top: 6px;
+            gap: 8px;
+            margin-bottom: 1.5rem;
         }
-
-        .skill-tag {
-            background: #eef3f9;
-            padding: 6px 18px;
+        .filter-btn {
+            padding: 0.4rem 1.2rem;
+            border: 1px solid var(--border);
             border-radius: 30px;
-            font-size: 0.95rem;
+            background: transparent;
+            color: var(--text-secondary);
             font-weight: 500;
-            color: #1a3b52;
-            border: 1px solid #d6e2ef;
-            transition: 0.2s;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+        .filter-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        .filter-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
         }
 
-        .skill-tag:hover {
-            background: #dce8f5;
-            transform: scale(1.02);
-        }
-
-        /* ----- PROJE KARTLARI ----- */
         .project-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.5rem;
         }
 
         .project-card {
-            background: #f8faff;
-            padding: 1.3rem 1.3rem 1.5rem;
-            border-radius: 18px;
-            border: 1px solid #e8eef6;
-            transition: 0.25s ease;
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 1.5rem 1.5rem 1.8rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            opacity: 1;
+            transform: scale(1);
         }
-
+        .project-card.hidden {
+            display: none;
+        }
         .project-card:hover {
-            border-color: #b3cee8;
-            box-shadow: 0 6px 20px rgba(0, 20, 40, 0.06);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+            border-color: var(--primary);
         }
-
         .project-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-            color: #0f2a3f;
+            font-size: 1.15rem;
+            margin-bottom: 0.4rem;
         }
-
-        .project-card p {
-            font-size: 0.95rem;
-            color: #3e5568;
-            margin-bottom: 0.8rem;
-        }
-
         .project-card .tech {
             font-size: 0.8rem;
-            background: #e3ecf5;
-            padding: 2px 12px;
+            background: var(--card-bg);
+            padding: 2px 14px;
             border-radius: 20px;
             display: inline-block;
-            color: #1f4970;
-            font-weight: 500;
+            color: var(--primary);
+            font-weight: 600;
+            border: 1px solid var(--border);
         }
-
-        .project-card a {
-            color: #1f6a9e;
+        .project-card .proj-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0.6rem 0 0.8rem;
+        }
+        .project-card .proj-link {
+            color: var(--primary);
             text-decoration: none;
             font-weight: 500;
             font-size: 0.9rem;
         }
-
-        .project-card a i {
-            margin-left: 4px;
-            font-size: 0.75rem;
+        .project-card .proj-link i {
+            transition: 0.3s;
+        }
+        .project-card .proj-link:hover i {
+            transform: translateX(4px);
         }
 
-        .project-card a:hover {
-            text-decoration: underline;
-        }
-
-        /* ----- İLETİŞİM ----- */
-        .contact-item {
+        /* ========== İLETİŞİM ========== */
+        .contact-section {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 2rem 2.5rem;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeUp 0.8s ease 0.4s forwards;
             display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 10px;
-            font-size: 1rem;
+            gap: 1.5rem;
         }
 
-        .contact-item i {
-            width: 24px;
-            color: #1f6a9e;
-            font-size: 1.2rem;
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 2rem;
         }
-
-        .contact-item a {
-            color: #1e3f5c;
+        .contact-info a {
+            color: var(--text-secondary);
             text-decoration: none;
-            border-bottom: 1px dotted transparent;
-            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .contact-info a:hover {
+            color: var(--primary);
+        }
+        .contact-info i {
+            font-size: 1.2rem;
+            color: var(--primary);
+            width: 24px;
         }
 
-        .contact-item a:hover {
-            border-bottom-color: #1f6a9e;
-            color: #0f2a3f;
-        }
-
-        /* ---------- FOOTER ---------- */
-        .footer {
+        .footer-note {
             text-align: center;
-            padding: 1.5rem 3rem 1.8rem;
+            margin-top: 2rem;
+            color: var(--text-secondary);
             font-size: 0.9rem;
-            color: #6f8aa0;
-            border-top: 1px solid #eaf0f7;
-            background: #fbfdff;
+            border-top: 1px solid var(--border);
+            padding-top: 1.8rem;
         }
 
-        .footer i {
-            color: #b0c9df;
-            margin: 0 4px;
-        }
-
-        /* ---------- MOBIL UYUM ---------- */
-        @media (max-width: 650px) {
-            .header {
-                padding: 2rem 1.5rem;
+        /* ========== ANİMASYON ========== */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
-            .header h1 {
+        }
+
+        /* ========== MOBİL ========== */
+        @media (max-width: 700px) {
+            .navbar {
+                padding: 0.5rem 1.2rem;
+                border-radius: 30px;
+            }
+            .hero h1 {
                 font-size: 2.2rem;
             }
-            .content {
-                padding: 1.8rem 1.5rem;
+            .hero .dynamic-title {
+                font-size: 1.1rem;
+                min-height: 2.4rem;
+            }
+            .skills-section,
+            .projects-section,
+            .contact-section {
+                padding: 1.5rem;
             }
             .project-grid {
                 grid-template-columns: 1fr;
+            }
+            .contact-section {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .contact-info {
+                justify-content: center;
             }
         }
     </style>
@@ -268,115 +440,274 @@
 
     <div class="container">
 
-        <!-- BAŞLIK / HAKKINDA -->
-        <div class="header">
-            <div class="avatar">
+        <!-- ===== NAVBAR ===== -->
+        <nav class="navbar">
+            <div class="logo">onur<span>.</span></div>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <header class="hero">
+            <div class="hero-avatar">
                 <i class="fas fa-user-astronaut"></i>
             </div>
             <h1>Onur D.</h1>
-            <div class="title">Bilgisayar Mühendisi · Full Stack Developer</div>
-            <div class="social-links">
+            <div class="dynamic-title">
+                <span id="typedText"></span><span class="cursor"></span>
+            </div>
+            <p class="hero-bio">
+                Bilgisayar Mühendisi · Full Stack geliştirici · Açık kaynak tutkunu.
+                Teknolojiyle hayatları kolaylaştıran çözümler üretiyorum.
+            </p>
+            <div class="social-icons">
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
                 <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
                 <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
-        </div>
+            <div class="live-clock">
+                <i class="fas fa-clock"></i>
+                <span id="clockDisplay">--:--:--</span>
+            </div>
+        </header>
 
-        <!-- İÇERİK -->
-        <div class="content">
+        <!-- ===== YETENEKLER ===== -->
+        <section class="skills-section" id="skills">
+            <h2 class="section-title"><i class="fas fa-code"></i> Yetenekler</h2>
+            <div class="skill-item">
+                <div class="skill-label"><span>JavaScript / TypeScript</span><span>90%</span></div>
+                <div class="skill-bar"><div class="fill" data-width="90"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>React & Next.js</span><span>85%</span></div>
+                <div class="skill-bar"><div class="fill" data-width="85"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>Python (FastAPI / Django)</span><span>80%</span></div>
+                <div class="skill-bar"><div class="fill" data-width="80"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>Docker & Kubernetes</span><span>75%</span></div>
+                <div class="skill-bar"><div class="fill" data-width="75"></div></div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-label"><span>Yapay Zeka / LLM</span><span>70%</span></div>
+                <div class="skill-bar"><div class="fill" data-width="70"></div></div>
+            </div>
+        </section>
 
-            <!-- Biyografi -->
-            <div class="section bio">
-                <div class="section-title">
-                    <i class="fas fa-user"></i> Hakkımda
-                </div>
-                <p>
-                    Merhaba! Ben <span class="highlight">Onur</span>, bilgisayar mühendisiyim.
-                    Yazılım geliştirme, sistem mimarisi ve yapay zeka konularına ilgi duyuyorum.
-                    Teknolojiyle hayatları kolaylaştıran çözümler üretmekten keyif alıyorum.
-                </p>
-                <p>
-                    Şu anda serbest çalışıyor, açık kaynak projelere katkı sağlıyor ve
-                    yeni teknolojileri keşfediyorum.
-                </p>
+        <!-- ===== PROJELER ===== -->
+        <section class="projects-section" id="projects">
+            <h2 class="section-title"><i class="fas fa-rocket"></i> Projeler</h2>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Tümü</button>
+                <button class="filter-btn" data-filter="ai">Yapay Zeka</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="backend">Backend</button>
             </div>
 
-            <!-- Yetenekler -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-code"></i> Uzmanlık Alanları
+            <div class="project-grid" id="projectGrid">
+                <!-- Kart 1 -->
+                <div class="project-card" data-category="ai">
+                    <h4>AI RAG Asistan</h4>
+                    <div class="tech">Python · LangChain · ChromaDB</div>
+                    <p class="proj-desc">Dökümanları sorgulayan, özet çıkaran ve bağlamsal yanıtlar üreten bir chatbot.</p>
+                    <a href="#" class="proj-link">Detaylar <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="skills-grid">
-                    <span class="skill-tag">JavaScript / TypeScript</span>
-                    <span class="skill-tag">React & Next.js</span>
-                    <span class="skill-tag">Node.js</span>
-                    <span class="skill-tag">Python (Flask/Django)</span>
-                    <span class="skill-tag">Go / Rust</span>
-                    <span class="skill-tag">SQL / NoSQL</span>
-                    <span class="skill-tag">Docker & Kubernetes</span>
-                    <span class="skill-tag">CI/CD (GitHub Actions)</span>
-                    <span class="skill-tag">Yapay Zeka (LLM, RAG)</span>
+                <!-- Kart 2 -->
+                <div class="project-card" data-category="web">
+                    <h4>Dinamik Portföy</h4>
+                    <div class="tech">HTML · CSS · JavaScript</div>
+                    <p class="proj-desc">Bu sayfa! Filtreleme, tema değiştirme ve yazı efekti ile dinamik.</p>
+                    <a href="#" class="proj-link">Detaylar <i class="fas fa-arrow-right"></i></a>
                 </div>
-            </div>
-
-            <!-- Projeler -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-rocket"></i> Öne Çıkan Projeler
+                <!-- Kart 3 -->
+                <div class="project-card" data-category="backend">
+                    <h4>Mikroservis API</h4>
+                    <div class="tech">Go · gRPC · Redis · Kafka</div>
+                    <p class="proj-desc">Yüksek trafikli e-ticaret için ölçeklenebilir mikroservis mimarisi.</p>
+                    <a href="#" class="proj-link">Detaylar <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="project-grid">
-                    <div class="project-card">
-                        <h4>AI Asistan</h4>
-                        <p>Döküman sorgulama ve özetleme için RAG tabanlı bir chatbot.</p>
-                        <span class="tech">Python · LangChain</span>
-                        <br><br>
-                        <a href="#">Proje detayları <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="project-card">
-                        <h4>E-Ticaret API</h4>
-                        <p>Yüksek performanslı, mikroservis mimarisine sahip bir API ağı.</p>
-                        <span class="tech">Go · gRPC · Redis</span>
-                        <br><br>
-                        <a href="#">Proje detayları <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                    <div class="project-card">
-                        <h4>Portföy Siteniz</h4>
-                        <p>Bu sayfa! Sade, hızlı ve tamamen size özel.</p>
-                        <span class="tech">HTML · CSS · GitHub Pages</span>
-                        <br><br>
-                        <a href="#"><i class="fas fa-check-circle"></i> Yayında</a>
-                    </div>
+                <!-- Kart 4 -->
+                <div class="project-card" data-category="ai">
+                    <h4>Sentiment Analiz</h4>
+                    <div class="tech">Python · HuggingFace · FastAPI</div>
+                    <p class="proj-desc">Sosyal medya metinlerinde duygu analizi yapan REST API.</p>
+                    <a href="#" class="proj-link">Detaylar <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <!-- Kart 5 -->
+                <div class="project-card" data-category="web">
+                    <h4>E-Ticaret Frontend</h4>
+                    <div class="tech">React · Tailwind · Zustand</div>
+                    <p class="proj-desc">Modern, hızlı ve kullanıcı dostu bir alışveriş deneyimi.</p>
+                    <a href="#" class="proj-link">Detaylar <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
+        </section>
 
-            <!-- İletişim -->
-            <div class="section">
-                <div class="section-title">
-                    <i class="fas fa-envelope"></i> İletişim
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-at"></i>
-                    <a href="mailto:onur@example.com">onur@example.com</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="#">github.com/onrdyr</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="#">linkedin.com/in/onrdyr</a>
-                </div>
+        <!-- ===== İLETİŞİM ===== -->
+        <section class="contact-section" id="contact">
+            <div class="contact-info">
+                <a href="mailto:onur@example.com"><i class="fas fa-envelope"></i> onur@example.com</a>
+                <a href="#"><i class="fab fa-github"></i> github.com/onrdyr</a>
+                <a href="#"><i class="fab fa-linkedin"></i> linkedin.com/in/onrdyr</a>
             </div>
+            <div style="color: var(--text-secondary); font-size: 0.95rem;">
+                <i class="fas fa-map-pin" style="color: var(--primary);"></i> İstanbul / Türkiye
+            </div>
+        </section>
 
-        </div> <!-- /content -->
+        <footer class="footer-note">
+            <i class="fas fa-crown" style="color: var(--primary);"></i> 2026 · Tüm hakları açık · <i class="fas fa-heart" style="color: #e06b6b;"></i> ile yapıldı
+        </footer>
 
-        <!-- FOOTER -->
-        <div class="footer">
-            <i class="fas fa-crown"></i> 2026 · Tüm hakları saklıdır ·
-        </div>
+    </div>
 
-    </div> <!-- /container -->
+    <script>
+        // ============================================================
+        // 1. TYPEWRITER EFFECT (Yazı efekti)
+        // ============================================================
+        const words = [
+            'Bilgisayar Mühendisi',
+            'Full Stack Developer',
+            'Açık Kaynak Savunucusu',
+            'AI Meraklısı'
+        ];
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        const typedSpan = document.getElementById('typedText');
+
+        function typeEffect() {
+            const currentWord = words[wordIndex];
+            if (isDeleting) {
+                typedSpan.textContent = currentWord.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typedSpan.textContent = currentWord.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            if (!isDeleting && charIndex === currentWord.length) {
+                isDeleting = true;
+                setTimeout(typeEffect, 1800);
+                return;
+            }
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                setTimeout(typeEffect, 300);
+                return;
+            }
+            setTimeout(typeEffect, isDeleting ? 60 : 120);
+        }
+        typeEffect();
+
+        // ============================================================
+        // 2. CANLI SAAT
+        // ============================================================
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString('tr-TR', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('clockDisplay').textContent = time;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // ============================================================
+        // 3. KARANLIK / AYDINLIK MOD
+        // ============================================================
+        const themeToggle = document.getElementById('themeToggle');
+        const icon = themeToggle.querySelector('i');
+        let dark = false;
+
+        // Sistem tercihini kontrol et
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            dark = true;
+            icon.className = 'fas fa-sun';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            dark = !dark;
+            document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+            icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        // ============================================================
+        // 4. PROJE FİLTRELEME
+        // ============================================================
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Aktif butonu güncelle
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // ============================================================
+        // 5. YETENEK ÇUBUKLARI (scroll ile tetiklenir)
+        // ============================================================
+        const skillFills = document.querySelectorAll('.skill-bar .fill');
+        let skillsAnimated = false;
+
+        function animateSkills() {
+            if (skillsAnimated) return;
+            const section = document.getElementById('skills');
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 80) {
+                skillFills.forEach(fill => {
+                    const width = fill.dataset.width;
+                    fill.style.width = width + '%';
+                });
+                skillsAnimated = true;
+            }
+        }
+
+        // ============================================================
+        // 6. SCROLL İLE GÖRÜNÜM ANİMASYONU (Intersection Observer)
+        // ============================================================
+        const sections = document.querySelectorAll('.skills-section, .projects-section, .contact-section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.15 });
+
+        sections.forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(40px)';
+            section.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            observer.observe(section);
+        });
+
+        // Yetenek çubuklarını scroll ile başlat
+        window.addEventListener('scroll', animateSkills);
+        window.addEventListener('load', () => {
+            setTimeout(animateSkills, 400);
+        });
+    </script>
 
 </body>
 </html>
